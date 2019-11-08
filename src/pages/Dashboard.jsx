@@ -35,7 +35,7 @@ class Dashboard extends React.Component {
         <Button>
           <Icon type="edit" />
         </Button>,
-        <Button type="danger" onClick={e => this.deleteTask(e)}>
+        <Button type="danger" onClick={this.deleteTask}>
           <Icon type="close" />
         </Button>,
       ]}
@@ -45,9 +45,8 @@ class Dashboard extends React.Component {
     </List.Item>
   );
 
-  deleteTask = e => {
-    e.preventDefault();
-    console.log(e);
+  deleteTask = id => {
+    console.log(id);
   };
 
   handleCancel = () => {
