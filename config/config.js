@@ -123,13 +123,13 @@ export default {
               component: './Proxies',
             },
 
-            // {
-            //   path: '/setting',
-            //   name: 'setting',
-            //   icon: 'setting',
-            //   component: './Setting',
-            //   // authority: ['admin'],
-            // },
+            {
+              path: '/botSetting',
+              name: 'Setting',
+              icon: 'setting',
+              component: './BotSetting',
+              // authority: ['admin'],
+            },
 
             {
               path: '/admin',

@@ -2,7 +2,7 @@ export default {
   namespace: 'dashboard',
 
   state: {
-    tasks: [{ name: 'ansh' }, { name: 'Kad' }],
+    tasks: [{ name: '+sacai,+blazer' }, { name: '+yeezy,+350' }],
   },
 
   reducers: {
