@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'dva';
-import { List, Button, Icon, Modal } from 'antd';
+import { List, Button, Icon, Modal, Popconfirm } from 'antd';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
+import WrappedAddTaskForm from './AddTaskForm';
 
 const mapStateToProps = state => ({
   tasks: state.dashboard.tasks,
@@ -11,6 +12,11 @@ const mapDispatchToProps = {
   addTask: task => ({
     type: 'dashboard/addTask',
     payload: task || {},
+  }),
+
+  deleteTask: id => ({
+    type: 'dashboard/deleteTask',
+    payload: id || -1,
   }),
 };
 
@@ -35,18 +41,27 @@ class Dashboard extends React.Component {
         <Button>
           <Icon type="edit" />
         </Button>,
-        <Button type="danger" onClick={this.deleteTask}>
-          <Icon type="close" />
-        </Button>,
+        <Popconfirm
+          title="Are you sure to delete?"
+          okText="Yes"
+          cancelText="No"
+          onConfirm={() => this.deleteTask(item.id)}
+        >
+          <Button type="danger">
+            <Icon type="close" />
+          </Button>
+        </Popconfirm>,
       ]}
+      key={item.id}
     >
       <List.Item.Meta title={item.name} description="Slam Jam" />
-      <div>Idle</div>
+      <div>{item.status}</div>
     </List.Item>
   );
 
   deleteTask = id => {
-    console.log(id);
+    const { deleteTask } = this.props;
+    deleteTask(id);
   };
 
   handleCancel = () => {
@@ -57,7 +72,7 @@ class Dashboard extends React.Component {
 
   handleOk = () => {
     const { addTask } = this.props;
-    addTask({ name: 'new task' });
+    addTask({ name: 'new task', id: 999 });
     this.setState({
       showAddTask: false,
     });
@@ -83,7 +98,7 @@ class Dashboard extends React.Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <p>Something</p>
+          <WrappedAddTaskForm />
         </Modal>
         <List itemLayout="horizontal" dataSource={tasks} renderItem={this.drawListitem}></List>
       </PageHeaderWrapper>

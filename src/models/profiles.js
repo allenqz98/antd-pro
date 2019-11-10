@@ -1,5 +1,5 @@
 export default {
-  namespace: 'profile',
+  namespace: 'profiles',
 
   state: {},
 

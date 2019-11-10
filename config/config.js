@@ -104,31 +104,30 @@ export default {
 
             {
               path: '/dasboard',
-              name: 'Dashboard',
+              name: 'dashboard',
               icon: 'crown',
               component: './Dashboard',
             },
 
             {
               path: '/profiles',
-              name: 'Profile',
+              name: 'profiles',
               icon: 'smile',
               component: './Profiles',
             },
 
             {
               path: '/proxies',
-              name: 'Proxy',
+              name: 'proxies',
               icon: 'file-add',
               component: './Proxies',
             },
 
             {
               path: '/botSetting',
-              name: 'Setting',
+              name: 'setting',
               icon: 'setting',
               component: './BotSetting',
-              // authority: ['admin'],
             },
 
             {
